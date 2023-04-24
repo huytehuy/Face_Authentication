@@ -11,6 +11,18 @@ function App() {
   // const handleDataReceived = (dataFromChild) => {
   //   setData(dataFromChild);
   // };
+  const [name, setName] = useState('');
+  useEffect(() => {
+    const storedName = sessionStorage.getItem('name');
+    if (storedName) {
+      setName(storedName);
+    }
+  }, []);
+
+  // Update name in session storage when it changes
+  useEffect(() => {
+    sessionStorage.setItem('name', name);
+  }, [name]);
 
 useEffect(() => {
   const script = document.createElement('script')
@@ -44,7 +56,7 @@ const faceRegistration = async (mssv,name) => {
         // website: "hihissss"
       },
     }) 
-    window.location.reload();
+    setTimeout(()=>{window.location.reload();},1000)
     // console.log(userInfo)
     // console.log('Unique Facial ID: ', userInfo.facialId)
     // console.log('Enrollment Date: ', userInfo.timestamp)
@@ -67,6 +79,7 @@ const faceSignIn = async () => {
 
     console.log('Unique Facial ID: ', userData.facialId)
     console.log('PayLoad: ', userData.payload)
+    setName(userData.payload.userId);
     document.querySelector('.name').innerHTML += `<p>Mã số sinh viên: ${userData.payload.userId}`
     document.querySelector('.name').innerHTML += `<p>Tên đầy đủ: ${decodeURIComponent(escape(window.atob(userData.payload.username)))}`
 
@@ -144,7 +157,9 @@ const handleError = (errCode) => {
   }
 }
   return (
+    
     <div className="face-authentication-by-trungquandev flex fdc jcfc aic">
+      <p>{name}</p>
       <div className='name'></div>
       <h1>Face Authentication using ReactJS & FaceIO</h1>
       {/* <button className="action face-registration">Face Registration</button> */}
