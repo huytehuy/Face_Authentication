@@ -1,7 +1,7 @@
 /* eslint-disable no-undef*/
 import React,{useEffect,useState} from 'react';
 import './App.css';
-import MyComponent from './components/Modal';
+import MyComponent from './components/modal';
 // import MyComponent from './components/modal';
 // import MyComponent from './components/modal';
 
