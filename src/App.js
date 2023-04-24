@@ -44,14 +44,15 @@ const faceRegistration = async () => {
         website: "hihissss"
       },
     })
-    // window.location.reload();
-    console.log(userInfo)
-    console.log('Unique Facial ID: ', userInfo.facialId)
-    console.log('Enrollment Date: ', userInfo.timestamp)
-    console.log('Gender: ', userInfo.details.gender)
-    console.log('Age Approximation: ', userInfo.details.age)
+    window.location.reload();
+    // console.log(userInfo)
+    // console.log('Unique Facial ID: ', userInfo.facialId)
+    // console.log('Enrollment Date: ', userInfo.timestamp)
+    // console.log('Gender: ', userInfo.details.gender)
+    // console.log('Age Approximation: ', userInfo.details.age)
 
   } catch (errorCode) {
+    setTimeout(()=>{window.location.reload();},2000)
     console.log(errorCode)
     handleError(errorCode)
   }
