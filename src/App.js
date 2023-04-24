@@ -1,11 +1,16 @@
 /* eslint-disable no-undef*/
-import React,{useEffect} from 'react';
+import React,{useEffect,useState} from 'react';
 import './App.css';
+import MyComponent from './components/Modal';
 // import MyComponent from './components/modal';
 // import MyComponent from './components/modal';
 
 function App() {
   let faceioInstance = null
+  const [data, setData] = useState('null');
+  const handleDataReceived = (dataFromChild) => {
+    setData(dataFromChild);
+  };
 
 useEffect(() => {
   const script = document.createElement('script')
@@ -33,10 +38,10 @@ const faceRegistration = async () => {
     const userInfo = await faceioInstance.enroll({
       locale: "auto",
       payload: {
-        email: "phamkhanhhuy1231@gmail.com",
-        userId: "huytehuy",
-        username: "Pham Khanh Huy",
-        website: "hihi"
+        // email: "phamkhanhhuy1231@gmail.com",
+        userId: data.mssv,
+        username: data.name,
+        // website: "hihi"
       },
     })
     // window.location.reload();
@@ -141,7 +146,8 @@ const handleError = (errCode) => {
     <div className="face-authentication-by-trungquandev flex fdc jcfc aic">
       <div className='name'></div>
       <h1>Face Authentication using ReactJS & FaceIO</h1>
-      <button className="action face-registration" onClick={faceRegistration}>Face Registration</button>
+      {/* <button className="action face-registration">Face Registration</button> */}
+      <MyComponent faceregister={faceRegistration} onDataReceived={handleDataReceived} />
       <button className="action face-sign-in" onClick={faceSignIn}>Face Sign In</button>
   
       {/* <div className="trungquandev-author">
@@ -176,7 +182,8 @@ const handleError = (errCode) => {
           <div className="basis-70"><a href="https://faceio.net/" target="_blank" rel="noopener noreferrer">https://faceio.net</a></div>
         </div>
       </div> */}
-
+      {/* <MyComponent faceregister={faceRegistration} onDataReceived={handleDataReceived} /> */}
+      {/* <p>{data.name}</p> */}
     </div>
   )
   
