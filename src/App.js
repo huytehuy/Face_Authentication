@@ -38,13 +38,15 @@ const faceRegistration = async () => {
     const userInfo = await faceioInstance.enroll({
       locale: "auto",
       payload: {
-        email: "phamkhanhhuy1231aaaaaaa@gmail.com",
+        // email: "phamkhanhhuy1231aaaaaaa@gmail.com",
         userId: data.mssv,
         username: data.name,
-        website: "hihissss"
+        // website: "hihissss"
       },
-    })
-    window.location.reload();
+    }) 
+    document.querySelector('.name').innerHTML += `<p>Tên tài khoản: ${data.mssv}`
+    document.querySelector('.name').innerHTML += `<p>Tên tài khoản: ${userData.payload.userId}`
+    // window.location.reload();
     // console.log(userInfo)
     // console.log('Unique Facial ID: ', userInfo.facialId)
     // console.log('Enrollment Date: ', userInfo.timestamp)
@@ -52,7 +54,7 @@ const faceRegistration = async () => {
     // console.log('Age Approximation: ', userInfo.details.age)
 
   } catch (errorCode) {
-    setTimeout(()=>{window.location.reload();},2000)
+    // setTimeout(()=>{window.location.reload();},2000)
     console.log(errorCode)
     handleError(errorCode)
   }
