@@ -7,10 +7,10 @@ import MyComponent from './components/modal';
 
 function App() {
   let faceioInstance = null
-  const [data, setData] = useState('null');
-  const handleDataReceived = (dataFromChild) => {
-    setData(dataFromChild);
-  };
+  // const [data, setData] = useState('null');
+  // const handleDataReceived = (dataFromChild) => {
+  //   setData(dataFromChild);
+  // };
 
 useEffect(() => {
   const script = document.createElement('script')
@@ -40,7 +40,7 @@ const faceRegistration = async (mssv,name) => {
       payload: {
         // email: "phamkhanhhuy1231aaaaaaa@gmail.com",
         userId: mssv,
-        username: name,
+        username: btoa(name),
         // website: "hihissss"
       },
     }) 
@@ -68,7 +68,7 @@ const faceSignIn = async () => {
     console.log('Unique Facial ID: ', userData.facialId)
     console.log('PayLoad: ', userData.payload)
     document.querySelector('.name').innerHTML += `<p>Mã số sinh viên: ${userData.payload.userId}`
-    document.querySelector('.name').innerHTML += `<p>Tên đầy đủ: ${userData.payload.username}`
+    document.querySelector('.name').innerHTML += `<p>Tên đầy đủ: ${atob(userData.payload.username)}`
 
   } catch (errorCode) {
     console.log(errorCode)
