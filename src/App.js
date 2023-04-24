@@ -40,7 +40,7 @@ const faceRegistration = async (mssv,name) => {
       payload: {
         // email: "phamkhanhhuy1231aaaaaaa@gmail.com",
         userId: mssv,
-        username: btoa(name),
+        username:window.btoa(unescape(encodeURIComponent(name))),
         // website: "hihissss"
       },
     }) 
@@ -52,7 +52,7 @@ const faceRegistration = async (mssv,name) => {
     // console.log('Age Approximation: ', userInfo.details.age)
 
   } catch (errorCode) {
-    setTimeout(()=>{window.location.reload();},2000)
+    setTimeout(()=>{window.location.reload();},1000)
     console.log(errorCode)
     handleError(errorCode)
   }
@@ -68,7 +68,7 @@ const faceSignIn = async () => {
     console.log('Unique Facial ID: ', userData.facialId)
     console.log('PayLoad: ', userData.payload)
     document.querySelector('.name').innerHTML += `<p>Mã số sinh viên: ${userData.payload.userId}`
-    document.querySelector('.name').innerHTML += `<p>Tên đầy đủ: ${atob(userData.payload.username)}`
+    document.querySelector('.name').innerHTML += `<p>Tên đầy đủ: ${decodeURIComponent(escape(window.atob(userData.payload.username)))}`
 
   } catch (errorCode) {
     console.log(errorCode)
