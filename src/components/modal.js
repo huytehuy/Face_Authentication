@@ -15,13 +15,13 @@ function MyComponent(props) {
 
   const closeModal = () => {
     setShowModal(false);
-    const info = { mssv: inputMSSV, name: inputname };
-    props.onDataReceived(info);
+    // const info = { mssv: inputMSSV, name: inputname };
+    // props.onDataReceived(info);
   };
   const continueModal = () => {
-    const info = { mssv: inputMSSV, name: inputname };
-    props.onDataReceived(info);
-    props.faceregister();
+    // const info = { mssv: inputMSSV, name: inputname };
+    // props.onDataReceived(info);
+    props.faceregister(inputMSSV,inputname);
   };
 
   const handleShowModal = () => {

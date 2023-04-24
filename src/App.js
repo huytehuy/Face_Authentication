@@ -33,14 +33,14 @@ const loaded = () => {
     faceioInstance = new faceIO('fioac27e')
   }
 }
-const faceRegistration = async () => {
+const faceRegistration = async (mssv,name) => {
   try {
     const userInfo = await faceioInstance.enroll({
       locale: "auto",
       payload: {
         // email: "phamkhanhhuy1231aaaaaaa@gmail.com",
-        userId: data.mssv,
-        username: data.name,
+        userId: mssv,
+        username: name,
         // website: "hihissss"
       },
     }) 
@@ -150,7 +150,7 @@ const handleError = (errCode) => {
       <div className='name'></div>
       <h1>Face Authentication using ReactJS & FaceIO</h1>
       {/* <button className="action face-registration">Face Registration</button> */}
-      <MyComponent faceregister={faceRegistration} onDataReceived={handleDataReceived} />
+      <MyComponent faceregister={faceRegistration}  />
       <button className="action face-sign-in" onClick={faceSignIn}>Face Sign In</button>
   
       {/* <div className="trungquandev-author">
