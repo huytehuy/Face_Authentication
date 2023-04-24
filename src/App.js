@@ -44,9 +44,7 @@ const faceRegistration = async (mssv,name) => {
         // website: "hihissss"
       },
     }) 
-    document.querySelector('.name').innerHTML += `<p>Tên tài khoản: ${data.mssv}`
-    document.querySelector('.name').innerHTML += `<p>Tên tài khoản: ${userData.payload.userId}`
-    // window.location.reload();
+    window.location.reload();
     // console.log(userInfo)
     // console.log('Unique Facial ID: ', userInfo.facialId)
     // console.log('Enrollment Date: ', userInfo.timestamp)
@@ -54,7 +52,7 @@ const faceRegistration = async (mssv,name) => {
     // console.log('Age Approximation: ', userInfo.details.age)
 
   } catch (errorCode) {
-    // setTimeout(()=>{window.location.reload();},2000)
+    setTimeout(()=>{window.location.reload();},2000)
     console.log(errorCode)
     handleError(errorCode)
   }
