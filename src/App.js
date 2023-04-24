@@ -67,8 +67,8 @@ const faceSignIn = async () => {
 
     console.log('Unique Facial ID: ', userData.facialId)
     console.log('PayLoad: ', userData.payload)
-    document.querySelector('.name').innerHTML += `<p>Tên tài khoản: ${userData.payload.userId}`
-    document.querySelector('.name').innerHTML += `<p>Tên người dùng: ${userData.payload.username}`
+    document.querySelector('.name').innerHTML += `<p>Mã số sinh viên: ${userData.payload.userId}`
+    document.querySelector('.name').innerHTML += `<p>Tên đầy đủ: ${userData.payload.username}`
 
   } catch (errorCode) {
     console.log(errorCode)
