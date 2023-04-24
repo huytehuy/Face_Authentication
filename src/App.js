@@ -11,21 +11,22 @@ function App() {
   // const handleDataReceived = (dataFromChild) => {
   //   setData(dataFromChild);
   // };
-  const [name, setName] = useState({
-    mssv:'',
-    name:''
-  });
+  const [name, setName] = useState('');
+  const [mssv, setMssv] = useState('');
   useEffect(() => {
     const storedName = sessionStorage.getItem('name');
     if (storedName) {
       setName(storedName);
+      setMssv(storedName)
     }
   }, []);
 
   // Update name in session storage when it changes
   useEffect(() => {
     sessionStorage.setItem('name', name);
+    sessionStorage.setItem('name',mssv)
   }, [name]);
+
 
 useEffect(() => {
   const script = document.createElement('script')
@@ -82,12 +83,10 @@ const faceSignIn = async () => {
 
     console.log('Unique Facial ID: ', userData.facialId)
     console.log('PayLoad: ', userData.payload)
-    setName({
-      mssv:userData.payload.userId,
-      name:decodeURIComponent(escape(window.atob(userData.payload.username)))
-    });
-    document.querySelector('.name').innerHTML += `<p>Mã số sinh viên: ${name.mssv}`
-    document.querySelector('.name').innerHTML += `<p>Tên đầy đủ: ${name.name}`
+    setName(userData.payload.userId)
+    setMssv(decodeURIComponent(escape(window.atob(userData.payload.username))))
+    document.querySelector('.name').innerHTML += `<p>Mã số sinh viên: ${name}`
+    document.querySelector('.name').innerHTML += `<p>Tên đầy đủ: ${mssv}`
 
   } catch (errorCode) {
     console.log(errorCode)
@@ -165,14 +164,18 @@ const handleError = (errCode) => {
   return (
     
     <div className="face-authentication-by-trungquandev flex fdc jcfc aic">
-    {/* <input value={name} onChange={(e) => setName(e.target.value)} />
-      <p>{name}</p> */}
+{/* <div>
+      <input value={name} onChange={(e) => setName(e.target.value)} />
+      <p>Hello, {name}!</p>
+      <input value={mssv} onChange={(e) => setMssv(e.target.value)} />
+      <p>Hello, {mssv}!</p>
+    </div> */}
       <div className='name'></div>
       <h1>Face Authentication using ReactJS & FaceIO</h1>
       {/* <button className="action face-registration">Face Registration</button> */}
       <MyComponent faceregister={faceRegistration}  />
       <button className="action face-sign-in" onClick={faceSignIn}>Face Sign In</button>
-      <button className="action face-sign-in" onClick={()=>{sessionStorage.clear();setName('')}}>Clear Session</button>
+      <button className="action face-sign-in" onClick={()=>{sessionStorage.clear();setName('');setMssv('')}}>Clear Session</button>
   
       {/* <div className="trungquandev-author">
         <div className="flex aic gap-10 mb-7 author">
