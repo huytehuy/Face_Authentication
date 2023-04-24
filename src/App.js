@@ -11,7 +11,10 @@ function App() {
   // const handleDataReceived = (dataFromChild) => {
   //   setData(dataFromChild);
   // };
-  const [name, setName] = useState('');
+  const [name, setName] = useState({
+    mssv:'',
+    name:''
+  });
   useEffect(() => {
     const storedName = sessionStorage.getItem('name');
     if (storedName) {
@@ -79,9 +82,12 @@ const faceSignIn = async () => {
 
     console.log('Unique Facial ID: ', userData.facialId)
     console.log('PayLoad: ', userData.payload)
-    setName(userData.payload.userId);
-    document.querySelector('.name').innerHTML += `<p>Mã số sinh viên: ${userData.payload.userId}`
-    document.querySelector('.name').innerHTML += `<p>Tên đầy đủ: ${decodeURIComponent(escape(window.atob(userData.payload.username)))}`
+    setName({
+      mssv:userData.payload.userId,
+      name:decodeURIComponent(escape(window.atob(userData.payload.username)))
+    });
+    document.querySelector('.name').innerHTML += `<p>Mã số sinh viên: ${name.mssv}`
+    document.querySelector('.name').innerHTML += `<p>Tên đầy đủ: ${name.name}`
 
   } catch (errorCode) {
     console.log(errorCode)
@@ -159,12 +165,14 @@ const handleError = (errCode) => {
   return (
     
     <div className="face-authentication-by-trungquandev flex fdc jcfc aic">
-      <p>{name}</p>
+    {/* <input value={name} onChange={(e) => setName(e.target.value)} />
+      <p>{name}</p> */}
       <div className='name'></div>
       <h1>Face Authentication using ReactJS & FaceIO</h1>
       {/* <button className="action face-registration">Face Registration</button> */}
       <MyComponent faceregister={faceRegistration}  />
       <button className="action face-sign-in" onClick={faceSignIn}>Face Sign In</button>
+      <button className="action face-sign-in" onClick={()=>{sessionStorage.clear();setName('')}}>Clear Session</button>
   
       {/* <div className="trungquandev-author">
         <div className="flex aic gap-10 mb-7 author">
