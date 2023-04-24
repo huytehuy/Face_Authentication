@@ -85,8 +85,8 @@ const faceSignIn = async () => {
     console.log('PayLoad: ', userData.payload)
     setName(userData.payload.userId)
     setMssv(decodeURIComponent(escape(window.atob(userData.payload.username))))
-    document.querySelector('.name').innerHTML += `<p>Mã số sinh viên: ${name}`
-    document.querySelector('.name').innerHTML += `<p>Tên đầy đủ: ${mssv}`
+    document.querySelector('.name').innerHTML += `<p>Mã số sinh viên: ${userData.payload.userId}`
+    document.querySelector('.name').innerHTML += `<p>Tên đầy đủ: ${decodeURIComponent(escape(window.atob(userData.payload.username)))}`
 
   } catch (errorCode) {
     console.log(errorCode)
@@ -164,12 +164,12 @@ const handleError = (errCode) => {
   return (
     
     <div className="face-authentication-by-trungquandev flex fdc jcfc aic">
-{/* <div>
-      <input value={name} onChange={(e) => setName(e.target.value)} />
+{/* <div> */}
+      {/* <input value={name} onChange={(e) => setName(e.target.value)} /> */}
       <p>Hello, {name}!</p>
-      <input value={mssv} onChange={(e) => setMssv(e.target.value)} />
+      {/* <input value={mssv} onChange={(e) => setMssv(e.target.value)} /> */}
       <p>Hello, {mssv}!</p>
-    </div> */}
+    {/* </div> */}
       <div className='name'></div>
       <h1>Face Authentication using ReactJS & FaceIO</h1>
       {/* <button className="action face-registration">Face Registration</button> */}
