@@ -184,7 +184,7 @@ const handleError = (errCode) => {
         </div>
       </div> */}
       {/* <MyComponent faceregister={faceRegistration} onDataReceived={handleDataReceived} /> */}
-      {/* <p>{data.name}</p> */}
+      {/* <p>{typeof(data.name)}</p> */}
     </div>
   )
   

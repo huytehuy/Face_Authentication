@@ -18,6 +18,11 @@ function MyComponent(props) {
     const info = { mssv: inputMSSV, name: inputname };
     props.onDataReceived(info);
   };
+  const continueModal = () => {
+    const info = { mssv: inputMSSV, name: inputname };
+    props.onDataReceived(info);
+    props.faceregister();
+  };
 
   const handleShowModal = () => {
     setShowModal(true);
@@ -71,7 +76,7 @@ function MyComponent(props) {
               <button className="close" onClick={closeModal}>
                 Close
               </button>
-              <button className="close" onClick={props.faceregister}>
+              <button className="close" onClick={continueModal}>
                 Countinue
               </button>
             </div>
