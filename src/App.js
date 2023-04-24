@@ -168,20 +168,20 @@ const handleError = (errCode) => {
     
     <div className="face-authentication-by-trungquandev flex fdc jcfc aic">
 {/* <div> */}
-      {/* <input value={name} onChange={(e) => setName(e.target.value)} /> */}
+      <input value={name} onChange={(e) => setName(e.target.value)} />
       {/* <p>Hello, {name}!</p> */}
-      {/* <input value={mssv} onChange={(e) => setMssv(e.target.value)} /> */}
+      <input value={mssv} onChange={(e) => setMssv(e.target.value)} />
       {/* <p>Hello, {mssv}!</p> */}
     {/* </div> */}
       <div className='name'>
-        <p>{name}</p>
-        <p>{mssv}</p>
+        <p>{name?`Tên người dùng: ${name}`:''}</p>
+        <p>{mssv?`Mã số sinh viên: ${mssv}`:''}</p>
       </div>
       <h1>Face Authentication using ReactJS & FaceIO</h1>
       {/* <button className="action face-registration">Face Registration</button> */}
       <MyComponent faceregister={faceRegistration}  />
       <button className="action face-sign-in" onClick={faceSignIn}>Face Sign In</button>
-      <button className="action face-sign-in" onClick={()=>{sessionStorage.clear();setName('');setMssv('');setTimeout(()=>{window.location.reload();},1000)}}>Clear Session</button>
+      <button className="action face-sign-in" onClick={()=>{sessionStorage.clear();setName('');setMssv('');window.location.reload();}}>Clear Session</button>
   
       {/* <div className="trungquandev-author">
         <div className="flex aic gap-10 mb-7 author">

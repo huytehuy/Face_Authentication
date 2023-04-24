@@ -68,7 +68,7 @@ function MyComponent(props) {
               <br />
               <input type="text" value={inputMSSV} onChange={handleInputMSSV} />
               <br />
-              <label htmlFor="lname">Tên đầy đủ:</label>
+              <label htmlFor="lname">Tên người dùng:</label>
               <br />
               <input type="text" value={inputname} onChange={handleInputname} />
             </form>
