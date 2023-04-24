@@ -38,10 +38,10 @@ const faceRegistration = async () => {
     const userInfo = await faceioInstance.enroll({
       locale: "auto",
       payload: {
-        email: "phamkhanhhuy1231aaaaaaa@gmail.com",
+        // email: "phamkhanhhuy1231aaaaaaa@gmail.com",
         userId: data.mssv,
         username: data.name,
-        website: "hihissss"
+        // website: "hihissss"
       },
     })
     window.location.reload();
