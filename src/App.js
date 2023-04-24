@@ -168,9 +168,9 @@ const handleError = (errCode) => {
     
     <div className="face-authentication-by-trungquandev flex fdc jcfc aic">
 {/* <div> */}
-      <input value={name} onChange={(e) => setName(e.target.value)} />
+      {/* <input value={name} onChange={(e) => setName(e.target.value)} /> */}
       {/* <p>Hello, {name}!</p> */}
-      <input value={mssv} onChange={(e) => setMssv(e.target.value)} />
+      {/* <input value={mssv} onChange={(e) => setMssv(e.target.value)} /> */}
       {/* <p>Hello, {mssv}!</p> */}
     {/* </div> */}
       <div className='name'>
