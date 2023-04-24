@@ -25,7 +25,7 @@ function App() {
   useEffect(() => {
     sessionStorage.setItem('name', name);
     sessionStorage.setItem('name',mssv)
-  }, [name]);
+  }, [name],[mssv]);
 
 
 useEffect(() => {
