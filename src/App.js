@@ -15,17 +15,20 @@ function App() {
   const [mssv, setMssv] = useState('');
   useEffect(() => {
     const storedName = sessionStorage.getItem('name');
+    const storedName2 = sessionStorage.getItem('mssv');
     if (storedName) {
       setName(storedName);
-      setMssv(storedName)
+      setMssv(storedName2)
     }
   }, []);
 
   // Update name in session storage when it changes
   useEffect(() => {
     sessionStorage.setItem('name', name);
-    sessionStorage.setItem('name',mssv)
-  }, [name],[mssv]);
+  }, [name]);
+  useEffect(() => {
+    sessionStorage.setItem('mssv',mssv)
+  }, [mssv]);
 
 
 useEffect(() => {
@@ -83,8 +86,8 @@ const faceSignIn = async () => {
 
     console.log('Unique Facial ID: ', userData.facialId)
     console.log('PayLoad: ', userData.payload)
-    setName(userData.payload.userId)
-    setMssv(decodeURIComponent(escape(window.atob(userData.payload.username))))
+    setName(decodeURIComponent(escape(window.atob(userData.payload.username))))
+    setMssv(userData.payload.userId)
     document.querySelector('.name').innerHTML += `<p>Mã số sinh viên: ${userData.payload.userId}`
     document.querySelector('.name').innerHTML += `<p>Tên đầy đủ: ${decodeURIComponent(escape(window.atob(userData.payload.username)))}`
 
